@@ -50,11 +50,23 @@ type TalentForm = {
 export function ApplicationFormComponent() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<ApplicationForm>()
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const onSubmit = (data: ApplicationForm) => {
-    console.log('Application:', data)
-    setSubmitted(true)
-    reset()
+  const onSubmit = async (data: ApplicationForm) => {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+        reset()
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -177,8 +189,8 @@ export function ApplicationFormComponent() {
 
       <input type="text" name="_hp" className="hidden" tabIndex={-1} autoComplete="off" />
 
-      <button type="submit" className="btn-primary w-full py-4">
-        Submit Application →
+      <button type="submit" disabled={loading} className="btn-primary w-full py-4 disabled:opacity-60 disabled:cursor-not-allowed">
+        {loading ? 'Submitting...' : 'Submit Application →'}
       </button>
     </form>
   )
@@ -187,11 +199,30 @@ export function ApplicationFormComponent() {
 export function TalentCommunity() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<TalentForm>()
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const onSubmit = (data: TalentForm) => {
-    console.log('Talent pool:', data)
-    setSubmitted(true)
-    reset()
+  const onSubmit = async (data: TalentForm) => {
+    setLoading(true)
+    try {
+      await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Talent Pool Sign-up',
+          email: data.talentEmail,
+          phone: '',
+          position: 'Talent Community',
+          experience: '',
+          industry: '',
+          linkedin: '',
+          coverNote: '',
+        }),
+      })
+      setSubmitted(true)
+      reset()
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -210,8 +241,8 @@ export function TalentCommunity() {
         type="email"
         placeholder="your@email.com"
       />
-      <button type="submit" className="btn-primary whitespace-nowrap px-6 py-3">
-        Join Talent Pool
+      <button type="submit" disabled={loading} className="btn-primary whitespace-nowrap px-6 py-3 disabled:opacity-60">
+        {loading ? 'Joining...' : 'Join Talent Pool'}
       </button>
     </form>
   )
