@@ -154,28 +154,41 @@ export default function AboutPage() {
 
       {/* Milestones */}
       <section className="py-section bg-navy">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           <AnimateOnScroll>
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <div className="section-label text-orange mb-3">Our Journey</div>
               <h2 className="font-display text-display-sm text-white">MILESTONES</h2>
             </div>
           </AnimateOnScroll>
-          <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-white/10" />
-            <div className="space-y-10">
-              {milestones.map((m, i) => (
-                <AnimateOnScroll key={m.year} delay={i * 0.1}>
-                  <div className="flex gap-8 items-start">
-                    <div className="relative flex-shrink-0 w-16 h-16 rounded-full bg-orange flex items-center justify-center z-10">
-                      <span className="font-display text-sm text-white leading-none">{m.year}</span>
+
+          <div className="relative">
+            {/* Center line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2 hidden md:block" />
+
+            <div className="space-y-12">
+              {milestones.map((m, i) => {
+                const isLeft = i % 2 === 0
+                return (
+                  <AnimateOnScroll key={m.year} delay={i * 0.1} direction={isLeft ? 'left' : 'right'}>
+                    <div className={`relative flex items-center gap-0 md:gap-8 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
+                      {/* Card */}
+                      <div className="flex-1 md:max-w-[calc(50%-2.5rem)]">
+                        <div className="bg-white/5 border border-white/10 rounded-card p-6 hover:bg-white/8 transition-colors">
+                          <div className="font-display text-[40px] text-orange leading-none mb-3">{m.year}</div>
+                          <p className="text-white/70 font-body text-sm leading-relaxed">{m.event}</p>
+                        </div>
+                      </div>
+
+                      {/* Center dot */}
+                      <div className="hidden md:flex flex-shrink-0 w-5 h-5 rounded-full bg-orange border-4 border-navy z-10 relative" />
+
+                      {/* Empty spacer for opposite side */}
+                      <div className="hidden md:block flex-1" />
                     </div>
-                    <div className="pt-4">
-                      <p className="text-white/70 font-body text-sm leading-relaxed">{m.event}</p>
-                    </div>
-                  </div>
-                </AnimateOnScroll>
-              ))}
+                  </AnimateOnScroll>
+                )
+              })}
             </div>
           </div>
         </div>
