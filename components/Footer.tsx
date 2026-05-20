@@ -84,7 +84,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="text-white/30 text-xs font-body">
-            hello@urbanwerkzsg.com
+            urbanwerkz@gmail.com
           </p>
         </div>
       </div>

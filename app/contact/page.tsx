@@ -5,8 +5,8 @@ import { ContactFormComponent } from './ContactClient'
 const contactDetails = [
   {
     label: 'Email',
-    value: 'hello@urbanwerkzsg.com',
-    href: 'mailto:hello@urbanwerkzsg.com',
+    value: 'urbanwerkz@gmail.com',
+    href: 'mailto:urbanwerkz@gmail.com',
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -15,7 +15,7 @@ const contactDetails = [
   },
   {
     label: 'Office',
-    value: 'Singapore',
+    value: '61 Kaki Bukit Ave 1, #06-18, Singapore',
     href: null as string | null,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -102,9 +102,18 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                {/* Map placeholder */}
-                <div className="mt-10 rounded-card bg-navy/10 h-48 flex items-center justify-center">
-                  <p className="text-muted text-sm font-body">📍 Singapore Office</p>
+                {/* Map */}
+                <div className="mt-10 rounded-card overflow-hidden h-48">
+                  <iframe
+                    src="https://www.google.com/maps?q=61+Kaki+Bukit+Ave+1,+Singapore&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Urban Werkz Office"
+                  />
                 </div>
 
                 {/* LinkedIn */}

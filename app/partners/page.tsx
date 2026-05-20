@@ -39,10 +39,10 @@ const caseStudies = [
     tag: 'Supply Chain',
   },
   {
-    industry: 'Compliance SaaS',
+    industry: 'Green Technology',
     result: '60% shorter sales cycle',
     metric: 'via playbook optimisation',
-    tag: 'Legal & Compliance',
+    tag: 'Green Tech',
   },
 ]
 
