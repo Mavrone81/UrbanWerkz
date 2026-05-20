@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas: 'Bebas Neue', Impact, sans-serif;
+  --font-dm-sans: 'DM Sans', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-body;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    @apply bg-orange text-white;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-orange;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-orange text-white font-body font-semibold px-6 py-3 rounded-btn text-sm tracking-wide transition-all duration-200 hover:bg-[#c94008] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-white text-ink font-body font-semibold px-6 py-3 rounded-btn text-sm border border-ink tracking-wide transition-all duration-200 hover:bg-ink hover:text-white active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-white font-body font-semibold px-6 py-3 rounded-btn text-sm border border-white tracking-wide transition-all duration-200 hover:bg-white hover:text-ink active:scale-95;
+  }
+
+  .btn-outline-nav {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-ink font-body font-semibold px-4 py-2 rounded-btn text-sm border border-ink tracking-wide transition-all duration-200 hover:bg-ink hover:text-white active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full h-12 px-4 border border-border rounded-btn text-ink font-body text-sm bg-white transition-all duration-200 focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 placeholder:text-muted;
+  }
+
+  .input-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  .textarea-field {
+    @apply w-full px-4 py-3 border border-border rounded-card text-ink font-body text-sm bg-white transition-all duration-200 focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/20 placeholder:text-muted resize-none;
+  }
+
+  .section-label {
+    @apply text-orange font-body font-semibold text-sm tracking-[0.15em] uppercase;
+  }
+
+  .card {
+    @apply bg-white rounded-card shadow-card p-6 transition-shadow duration-300 hover:shadow-card-hover;
+  }
+}
+
+/* Skip to content */
+.skip-link {
+  @apply fixed -top-full left-4 z-[9999] bg-orange text-white px-4 py-2 rounded-btn font-semibold text-sm;
+}
+.skip-link:focus {
+  @apply top-4;
+}
+
+/* Counter animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
