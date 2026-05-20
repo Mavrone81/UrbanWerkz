@@ -31,7 +31,7 @@ const milestones = [
   { year: '2022', event: 'Urban Werkz founded in Singapore with one founding partner.' },
   { year: '2023', event: 'First 10 client partnerships closed. CRM methodology formalised.' },
   { year: '2024', event: 'Expanded into Malaysia and Indonesia. Team grew to 20 sales reps.' },
-  { year: '2025', event: '10+ active partners.' },
+  { year: '2025', event: '10+ active partners. Team grew to 30+ sales reps.' },
   { year: '2026', event: 'Regional HQ established. Digital presence launch. Talent programme scaled.' },
 ]
 
