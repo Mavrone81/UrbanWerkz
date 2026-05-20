@@ -65,12 +65,10 @@ export default function Navbar() {
             ))}
             <Link
               href="/join-us"
-              className={`btn-outline-nav text-xs px-3 py-1.5 transition-colors duration-300 ${
-                pathname === '/join-us'
-                  ? 'bg-ink text-white'
-                  : scrolled
-                  ? ''
-                  : 'border-white text-white hover:bg-white hover:text-ink'
+              className={`inline-flex items-center justify-center font-body font-semibold px-3 py-1.5 rounded-btn text-xs border tracking-wide transition-all duration-300 active:scale-95 ${
+                scrolled
+                  ? 'text-ink border-ink hover:bg-ink hover:text-white'
+                  : 'text-white border-white hover:bg-white hover:text-ink'
               }`}
             >
               Join Us
