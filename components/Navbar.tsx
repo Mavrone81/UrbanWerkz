@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between gap-8">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center gap-1">
-            <span className="font-display text-2xl text-ink tracking-wide leading-none">
+            <span className={`font-display text-2xl tracking-wide leading-none transition-colors duration-300 ${scrolled ? 'text-ink' : 'text-white'}`}>
               URBAN
             </span>
             <span className="font-display text-2xl text-orange tracking-wide leading-none">
@@ -55,7 +55,9 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`font-body text-sm font-medium transition-colors duration-200 hover:text-orange ${
-                  pathname === link.href ? 'text-orange' : 'text-ink'
+                  pathname === link.href
+                    ? 'text-orange'
+                    : scrolled ? 'text-ink' : 'text-white'
                 }`}
               >
                 {link.label}
@@ -63,8 +65,12 @@ export default function Navbar() {
             ))}
             <Link
               href="/join-us"
-              className={`btn-outline-nav text-xs px-3 py-1.5 ${
-                pathname === '/join-us' ? 'bg-ink text-white' : ''
+              className={`btn-outline-nav text-xs px-3 py-1.5 transition-colors duration-300 ${
+                pathname === '/join-us'
+                  ? 'bg-ink text-white'
+                  : scrolled
+                  ? ''
+                  : 'border-white text-white hover:bg-white hover:text-ink'
               }`}
             >
               Join Us
@@ -86,19 +92,13 @@ export default function Navbar() {
             aria-expanded={mobileOpen}
           >
             <span
-              className={`block w-6 h-0.5 bg-ink transition-transform duration-200 ${
-                mobileOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
+              className={`block w-6 h-0.5 transition-all duration-200 ${scrolled ? 'bg-ink' : 'bg-white'} ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-ink transition-opacity duration-200 ${
-                mobileOpen ? 'opacity-0' : ''
-              }`}
+              className={`block w-6 h-0.5 transition-all duration-200 ${scrolled ? 'bg-ink' : 'bg-white'} ${mobileOpen ? 'opacity-0' : ''}`}
             />
             <span
-              className={`block w-6 h-0.5 bg-ink transition-transform duration-200 ${
-                mobileOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
+              className={`block w-6 h-0.5 transition-all duration-200 ${scrolled ? 'bg-ink' : 'bg-white'} ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`}
             />
           </button>
         </div>
