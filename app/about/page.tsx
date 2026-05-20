@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import AnimateOnScroll from '@/components/AnimateOnScroll'
 
 export const metadata: Metadata = {
@@ -35,9 +36,8 @@ const milestones = [
 ]
 
 const team = [
-  { name: 'Levi Clavesillas', title: 'Founder & Managing Director', initials: 'LC' },
-  { name: 'Head of Sales', title: 'VP, Sales Operations', initials: 'HS' },
-  { name: 'Head of Partnerships', title: 'Director, Partner Success', initials: 'HP' },
+  { name: 'Vincent Lim', title: 'Founder & Managing Director', initials: 'VL', photo: '/team/vincent-lim.jpg' },
+  { name: 'Samuel Fu', title: 'Head of Sales', initials: 'SF', photo: '/team/samuel-fu.jpg' },
 ]
 
 export default function AboutPage() {
@@ -120,12 +120,16 @@ export default function AboutPage() {
               <h2 className="font-display text-display-sm text-ink">LEADERSHIP</h2>
             </div>
           </AnimateOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {team.map((member, i) => (
               <AnimateOnScroll key={member.name} delay={i * 0.1}>
                 <div className="card text-center">
-                  <div className="w-24 h-24 rounded-full bg-navy flex items-center justify-center mx-auto mb-5">
-                    <span className="font-display text-2xl text-orange">{member.initials}</span>
+                  <div className="w-24 h-24 rounded-full bg-navy flex items-center justify-center mx-auto mb-5 overflow-hidden">
+                    {member.photo ? (
+                      <Image src={member.photo} alt={member.name} width={96} height={96} className="w-full h-full object-cover" />
+                    ) : (
+                      <span className="font-display text-2xl text-orange">{member.initials}</span>
+                    )}
                   </div>
                   <h3 className="font-semibold text-ink font-body">{member.name}</h3>
                   <p className="text-muted text-sm mt-1 mb-4">{member.title}</p>
