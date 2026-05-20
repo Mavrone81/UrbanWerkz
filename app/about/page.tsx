@@ -36,8 +36,8 @@ const milestones = [
 ]
 
 const team = [
-  { name: 'Vincent Lim', title: 'Founder & Managing Director', initials: 'VL', photo: '/team/vincent-lim.jpg' },
-  { name: 'Samuel Fu', title: 'Head of Sales', initials: 'SF', photo: '/team/samuel-fu.jpg' },
+  { name: 'Vincent Lim', title: 'Founder & Managing Director', initials: 'VL', photo: '/team/vincent-lim.png' },
+  { name: 'Samuel Fu', title: 'Head of Sales', initials: 'SF', photo: '/team/samuel-fu.png' },
 ]
 
 export default function AboutPage() {
